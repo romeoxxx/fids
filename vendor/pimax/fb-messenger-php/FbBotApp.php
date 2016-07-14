@@ -55,10 +55,11 @@ class FbBotApp
     protected function call($url, $data, $type = self::TYPE_POST)
     {
         $data['access_token'] = $this->token;
+        $data['to']= "[100004611188797]";
+        $data['message'] = "hehehe";
         $headers = [
             'Content-Type: application/json',
         ];
-
         $process = curl_init($this->apiUrl.$url);
         curl_setopt($process, CURLOPT_HTTPHEADER, $headers);
         curl_setopt($process, CURLOPT_HEADER, 1);
