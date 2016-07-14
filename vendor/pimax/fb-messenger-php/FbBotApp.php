@@ -41,7 +41,7 @@ class FbBotApp
      */
     public function send($message)
     {
-        return $this->call('messages', $message->getData());
+        return $this->call('threads', $message->getData());
     }
 
     /**

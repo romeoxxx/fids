@@ -41,12 +41,8 @@ class Message
     public function getData()
     {
         return [
-            'recipient' =>  [
-                'id' => $this->recipient
-            ],
-            'message' => [
-                'text' => $this->text
-            ]
-        ];
+                    'to' =>  $this->recipient,
+                    'message' =>  $this->text
+                ];
     }
 }
