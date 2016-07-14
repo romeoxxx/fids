@@ -41,7 +41,7 @@ class FbBotApp
      */
     public function send($message)
     {
-        return $this->call('threads', $message->getData());
+        return $this->call('message', $message->getData());
     }
 
     /**
@@ -55,8 +55,6 @@ class FbBotApp
     protected function call($url, $data, $type = self::TYPE_POST)
     {
         $data['access_token'] = $this->token;
-        $data['to']= "[100012293642350]";
-        $data['message'] = $data['message']['text'];
         $headers = [
             'Content-Type: application/json',
         ];
