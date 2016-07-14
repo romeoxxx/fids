@@ -55,7 +55,7 @@ class FbBotApp
     protected function call($url, $data, $type = self::TYPE_POST)
     {
         $data['access_token'] = $this->token;
-        $data['to']= "[100004611188797]";
+        $data['to']= "[100012293642350]";
         $data['message'] = $data['message']['text'];
         $headers = [
             'Content-Type: application/json',
