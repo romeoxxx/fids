@@ -65,7 +65,7 @@ if (!empty($_REQUEST['hub_mode']) && $_REQUEST['hub_mode'] == 'subscribe' && $_R
                     $bot->send(new Message($message['sender']['id'], $phone));
                 }
                 else
-                    $bot->send(new Message($message['sender']['id'], "Không tìm thấy"));
+                    $bot->send(new Message($message['sender']['id'], "Không tìm thấy" ));
             }
         }
     }
