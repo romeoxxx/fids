@@ -60,8 +60,12 @@ if (!empty($_REQUEST['hub_mode']) && $_REQUEST['hub_mode'] == 'subscribe' && $_R
                 $bot->send(new Message($message['sender']['id'], 'Đang kiểm tra'));
                 $html = file_get_contents("http://tiepcankhachhang.com/fid/?uid=".$command);
                 if($html != "")
-                    $html = substr($html, 0, -3).'xxx';
-                    $bot->send(new Message($message['sender']['id'], $html));
+                {
+                    $phone = explode("|", $html);
+                    $phone = $phone[0];
+                    $phone = substr($phone, 0, -3).'xxx';
+                    $bot->send(new Message($message['sender']['id'], $phone));
+                }
                 else
                     $bot->send(new Message($message['sender']['id'], "Không tìm thấy"));
             }
