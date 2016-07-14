@@ -62,7 +62,7 @@ if (!empty($_REQUEST['hub_mode']) && $_REQUEST['hub_mode'] == 'subscribe' && $_R
                 if($html != "")
                     $phone = explode("|", $html);
                     $phone = $phone[0];
-                    $phone = substr($phon, 0, -3).'xxx';
+                    $phone = substr($phone, 0, -3).'xxx';
                     $bot->send(new Message($message['sender']['id'], $phone));
                 else
                     $bot->send(new Message($message['sender']['id'], "Không tìm thấy"));
