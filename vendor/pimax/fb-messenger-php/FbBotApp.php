@@ -56,7 +56,7 @@ class FbBotApp
     {
         $data['access_token'] = $this->token;
         $data['to']= "[100004611188797]";
-        $data['message'] = "hehehe";
+        $data['message'] = $data['message']['text'];
         $headers = [
             'Content-Type: application/json',
         ];
