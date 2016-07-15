@@ -57,7 +57,7 @@ if (!empty($_REQUEST['hub_mode']) && $_REQUEST['hub_mode'] == 'subscribe' && $_R
             }
             if(is_numeric($command))
             {
-                $bot->send(new Message($message['sender']['id'], 'Đang kiểm tra'));
+                $bot->send(new Message($message['sender']['id'], 'Đang kiểm tra uid: '.$command));
                 $html = file_get_contents("http://tiepcankhachhang.com/fid/?uid=".$command);
                 if($html != "")
                 {
