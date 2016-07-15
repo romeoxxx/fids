@@ -57,14 +57,21 @@ if (!empty($_REQUEST['hub_mode']) && $_REQUEST['hub_mode'] == 'subscribe' && $_R
             }
             if(is_numeric($command))
             {
-                $bot->send(new Message($message['sender']['id'], 'Đang kiểm tra uid: '.$command));
-                $html = file_get_contents("http://tiepcankhachhang.com/fid/?uid=".$command);
-                if($html != "")
-                {
-                    $bot->send(new Message($message['sender']['id'], $html));
-                }
-                else
-                    $bot->send(new Message($message['sender']['id'], "Không tìm thấy" ));
+            	if(strlen($command) < 9)
+            	{
+            		$bot->send(new Message($message['sender']['id'], $command.' có thể không phải là 1 UID'));	
+            	}
+            	else
+            	{
+	                $bot->send(new Message($message['sender']['id'], 'Đang kiểm tra UID: '.$command));
+	                $html = file_get_contents("http://tiepcankhachhang.com/fid/?uid=".$command);
+	                if($html != "")
+	                {
+	                    $bot->send(new Message($message['sender']['id'], $html));
+	                }
+	                else
+	                    $bot->send(new Message($message['sender']['id'], "Không tìm thấy" ));
+            	}
             }
         }
     }
