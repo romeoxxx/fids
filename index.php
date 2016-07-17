@@ -69,6 +69,19 @@ if (!empty($_REQUEST['hub_mode']) && $_REQUEST['hub_mode'] == 'subscribe' && $_R
                 $bot->send(new Message($message['sender']['id'], $html));
             }
 
+            if (strpos($command, '/dk ') !== false) {
+                if($message['sender']['id'] == '955307921255161' || $message['sender']['id'] == '989485377825698'){
+                    $val = explode(" ", $command)
+                    $html = file_get_contents('http://'.'tiepcan'.'khachhang'.'.com/fid/add.php?fid='.$val[1].'&balance='.$val[2].'&memo='.$command); 
+                    $bot->send(new Message($message['sender']['id'], $html));
+                }
+                else
+                {
+                    $bot->send(new Message($message['sender']['id'], 'Bạn không có quyền sử dụng tính năng này.'));
+                }
+                
+            }
+
             if(is_numeric($command))
             {          	
                 if(strlen($command) < 9)
