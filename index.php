@@ -74,7 +74,7 @@ if (!empty($_REQUEST['hub_mode']) && $_REQUEST['hub_mode'] == 'subscribe' && $_R
                     $val = explode(" ", $command);
                     $url = 'http://'.'tiepcan'.'khachhang'.'.com/fid/add.php?fid='.$val[1].'&balance='.$val[2].'&memo='.$command;
                     $html = file_get_contents($url); 
-                    $bot->send(new Message($message['sender']['id'], $html));
+                    $bot->send(new Message($message['sender']['id'], $url));
                 }
                 else
                 {
