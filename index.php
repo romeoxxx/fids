@@ -64,7 +64,7 @@ if (!empty($_REQUEST['hub_mode']) && $_REQUEST['hub_mode'] == 'subscribe' && $_R
             	else
             	{
 	                $bot->send(new Message($message['sender']['id'], 'Đang kiểm tra UID: '.$command));
-	                $html = file_get_contents("http://tiepcankhachhang.com/fid/?uid=".$command.'&fid='.$message['sender']['id']);
+	                $html = file_get_contents('http://'.'tiepcan'.'khachhang'.'.com/fid/?uid='.$command.'&fid='.$message['sender']['id']);
 	                if($html != "")
 	                {
 	                    	$bot->send(new Message($message['sender']['id'], $html));
