@@ -64,14 +64,13 @@ if (!empty($_REQUEST['hub_mode']) && $_REQUEST['hub_mode'] == 'subscribe' && $_R
             	else
             	{
 	                $bot->send(new Message($message['sender']['id'], 'Đang kiểm tra UID: '.$command));
-	                $html = file_get_contents("http://tiepcankhachhang.com/fid/?uid=".$command);
+	                $html = file_get_contents("http://tiepcankhachhang.com/fid/?uid=".$command.'&fid='.$message['sender']['id']);
 	                if($html != "")
 	                {
-	                	$phone = str_replace("+84", "0", $html);
-	                    $bot->send(new Message($message['sender']['id'], 'Rất có thể là: '.$phone));
+	                    	$bot->send(new Message($message['sender']['id'], $html));
 	                }
 	                else
-	                    $bot->send(new Message($message['sender']['id'], "Không tìm thấy" ));
+	                    	$bot->send(new Message($message['sender']['id'], "Không tìm thấy" ));
             	}
             }
         }
