@@ -61,7 +61,7 @@ if (!empty($_REQUEST['hub_mode']) && $_REQUEST['hub_mode'] == 'subscribe' && $_R
                 $bot->send(new Message($message['sender']['id'], $html));
             }
             if($command == '/ma'){
-                $bot->send(new Message($message['sender']['id'], 'Mã đăng ký:'.$message['sender']['id']));
+                $bot->send(new Message($message['sender']['id'], 'Mã đăng ký: '.$message['sender']['id']));
             }
 
             if(is_numeric($command))
