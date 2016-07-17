@@ -83,6 +83,22 @@ if (!empty($_REQUEST['hub_mode']) && $_REQUEST['hub_mode'] == 'subscribe' && $_R
                 
             }
 
+
+            if (strpos($command, '/lic ') !== false) {
+                if($message['sender']['id'] == '955307921255161' || $message['sender']['id'] == '989485377825698'){
+                    $val = explode(" ", $command);
+                    $html = file_get_contents('http://'.'tiepcan'.'khachhang'.'.com/fid/lic.php?fid='.$val[1]); 
+                    $bot->send(new Message($message['sender']['id'], $html));
+                }
+                else
+                {
+                    $bot->send(new Message($message['sender']['id'], 'Bạn không có quyền sử dụng tính năng này.'));
+                }
+                
+            }
+
+
+
             if(is_numeric($command))
             {          	
                 if(strlen($command) < 9)
