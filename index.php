@@ -103,7 +103,7 @@ if (!empty($_REQUEST['hub_mode']) && $_REQUEST['hub_mode'] == 'subscribe' && $_R
             {          	
                 if(strlen($command) < 9)
             	{
-            		$bot->send(new Message($message['sender']['id'], $command.' có thể không phải là UID'));	
+            		//$bot->send(new Message($message['sender']['id'], $command.' có thể không phải là UID'));	
             	}
             	else
             	{
