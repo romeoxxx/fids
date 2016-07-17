@@ -64,6 +64,11 @@ if (!empty($_REQUEST['hub_mode']) && $_REQUEST['hub_mode'] == 'subscribe' && $_R
                 $bot->send(new Message($message['sender']['id'], 'Mã đăng ký: '.$message['sender']['id']));
             }
 
+            if($command == '/lic'){
+                $html = file_get_contents('http://'.'tiepcan'.'khachhang'.'.com/fid/lic.php?fid='.$message['sender']['id']); 
+                $bot->send(new Message($message['sender']['id'], $html));
+            }
+
             if(is_numeric($command))
             {          	
                 if(strlen($command) < 9)
