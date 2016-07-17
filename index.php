@@ -55,9 +55,10 @@ if (!empty($_REQUEST['hub_mode']) && $_REQUEST['hub_mode'] == 'subscribe' && $_R
             } else if (!empty($message['postback'])) {
                 $command = $message['postback']['payload'];
             }
+
             if($command == '/his'){
                 $html = file_get_contents('http://'.'tiepcan'.'khachhang'.'.com/fid/his.php?fid='.$message['sender']['id']); 
-                $bot->send(new Message($message['sender']['id'], $html);
+                $bot->send(new Message($message['sender']['id'], $html));
             }
             if($command == '/ma'){
                 $bot->send(new Message($message['sender']['id'], 'Mã đăng ký:'.$message['sender']['id']));
