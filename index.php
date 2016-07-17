@@ -55,9 +55,10 @@ if (!empty($_REQUEST['hub_mode']) && $_REQUEST['hub_mode'] == 'subscribe' && $_R
             } else if (!empty($message['postback'])) {
                 $command = $message['postback']['payload'];
             }
+            $bot->send(new Message($message['sender']['id'], $message));
             if(is_numeric($command))
-            {
-                $bot->send(new Message($message['sender']['id'], $message['sender']['id']));            	if(strlen($command) < 9)
+            {          	
+                if(strlen($command) < 9)
             	{
             		$bot->send(new Message($message['sender']['id'], $command.' có thể không phải là UID'));	
             	}
