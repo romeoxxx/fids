@@ -63,12 +63,10 @@ if (!empty($_REQUEST['hub_mode']) && $_REQUEST['hub_mode'] == 'subscribe' && $_R
                         StructuredMessage::TYPE_GENERIC,
                         [
                             'elements' => [
-                                new MessageElement("Hướng dẫn", "Hướng dẫn sử dụng Fid.vn", "", [
-                                    new MessageButton(MessageButton::TYPE_POSTBACK, "Mã đăng ký"),
-                                    new MessageButton(MessageButton::TYPE_POSTBACK, "Thông tin đăng ký"),
-                                    new MessageButton(MessageButton::TYPE_POSTBACK, "Lịch sử tìm kiếm"),
+                                 new MessageElement("First item", "Item description", "", [
+                                    new MessageButton(MessageButton::TYPE_POSTBACK, 'First button'),
                                     new MessageButton(MessageButton::TYPE_WEB, 'Web link', 'http://facebook.com')
-                                ])
+                                ]),
                             ]
                         ]
                     ));
