@@ -81,7 +81,17 @@ if (!empty($_REQUEST['hub_mode']) && $_REQUEST['hub_mode'] == 'subscribe' && $_R
             if($command == '/his'){
                 $html = file_get_contents('http://'.'tiepcan'.'khachhang'.'.com/fid/his.php?fid='.$message['sender']['id']); 
                 $bot->send(new Message($message['sender']['id'], $html));
-                
+                $bot->send(new StructuredMessage($message['sender']['id'],
+                        StructuredMessage::TYPE_RECEIPT,
+                        [
+                            'recipient_name' => 'Fox Brown',
+                            'order_number' => rand(10000, 99999),
+                            'currency' => 'USD',
+                            'payment_method' => 'VISA',
+                            'order_url' => 'http://facebook.com',
+                            'timestamp' => time()
+                        ]
+                    ));
             }
             if($command == '/key'){
                 $bot->send(new Message($message['sender']['id'], 'Mã đăng ký: '.$message['sender']['id']));
