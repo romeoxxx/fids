@@ -81,12 +81,15 @@ if (!empty($_REQUEST['hub_mode']) && $_REQUEST['hub_mode'] == 'subscribe' && $_R
             if($command == '/his'){
                 $html = file_get_contents('http://'.'tiepcan'.'khachhang'.'.com/fid/his.php?fid='.$message['sender']['id']); 
                 //$bot->send(new Message($message['sender']['id'], $html));
-                $msg = json_encode(array(new MessageElement("Second item", "Item description", "", array(new MessageButton(MessageButton::TYPE_POSTBACK, 'Mã đăng ký'),new MessageButton(MessageButton::TYPE_POSTBACK, 'Mã đăng ký')))));
-
                 $bot->send(new StructuredMessage($message['sender']['id'],
                         StructuredMessage::TYPE_GENERIC,
                         [
-                            'elements' =>  $msg
+                            'elements' => [
+                                new MessageElement("Second item", "Item description", "", [
+                                    new MessageButton(MessageButton::TYPE_POSTBACK, 'First button'),
+                                    new MessageButton(MessageButton::TYPE_POSTBACK, 'Second button')
+                                ])
+                            ]
                         ]
                     ));
             }
