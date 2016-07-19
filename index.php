@@ -221,11 +221,9 @@ if (!empty($_REQUEST['hub_mode']) && $_REQUEST['hub_mode'] == 'subscribe' && $_R
                 break;
                 // Other message received
                 default:
-                    $bot->send(new Message($message['sender']['id'], 'Sorry. I don’t understand you.'));
-            }
-
-
-            
+                    //$bot->send(new Message($message['sender']['id'], 'Sorry. I don’t understand you.'));
+                break;
+            } 
         }
     }
 }
