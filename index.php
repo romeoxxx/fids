@@ -80,35 +80,11 @@ if (!empty($_REQUEST['hub_mode']) && $_REQUEST['hub_mode'] == 'subscribe' && $_R
             }
             if($command == '/his'){
                 $html = file_get_contents('http://'.'tiepcan'.'khachhang'.'.com/fid/his.php?fid='.$message['sender']['id']); 
-                //$bot->send(new Message($message['sender']['id'], $html));
-                $bot->send(new StructuredMessage($message['sender']['id'],
-                        StructuredMessage::TYPE_GENERIC,
-                        [
-                            "elements":[
-                              {
-                                "title":"Welcome to Peter\'s Hats",
-                                "image_url":"http://petersapparel.parseapp.com/img/item100-thumb.png",
-                                "subtitle":"We\'ve got the right hat for everyone.",
-                                "buttons":[
-                                  {
-                                    "type":"web_url",
-                                    "url":"https://petersapparel.parseapp.com/view_item?item_id=100",
-                                    "title":"View Website"
-                                  },
-                                  {
-                                    "type":"postback",
-                                    "title":"Start Chatting",
-                                    "payload":"USER_DEFINED_PAYLOAD"
-                                  }              
-                                ]
-                              }
-                            ]
-                        ]
-                    ));
+                $bot->send(new Message($message['sender']['id'], $html));
             }
             if($command == '/key'){
                 $bot->send(new Message($message['sender']['id'], 'Mã đăng ký: '.$message['sender']['id']));
-
+                
             }
 
             if($command == '/lic' && $command != '/lic '){
