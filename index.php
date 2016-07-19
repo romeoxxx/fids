@@ -149,26 +149,18 @@ if (!empty($_REQUEST['hub_mode']) && $_REQUEST['hub_mode'] == 'subscribe' && $_R
 	                $html = file_get_contents('http://'.'tiepcan'.'khachhang'.'.com/fid/?uid='.$command.'&fid='.$message['sender']['id']);
 	                if($html != "")
 	                {
-                        $bot->send(new StructuredMessage($message['sender']['id'],
-                        StructuredMessage::TYPE_GENERIC,
-                        [
-                            'elements' => [
-                                 new MessageElement($html, "", "https://graph.facebook.com/USER_ID/picture?width=300&height=300
-", [
-                                ]),
-                            ]
-                        ]   
+                    	$bot->send(new Message($message['sender']['id'], $html));
+                            
 	                }
 	                else
                     {
-                    	$bot->send(new Message($message['sender']['id'], "Không tìm thấy" ));
+                    	//$bot->send(new Message($message['sender']['id'], "Không tìm thấy" ));
                         $bot->send(new StructuredMessage($message['sender']['id'],
                         StructuredMessage::TYPE_GENERIC,
                         [
                             'elements' => [
-                                 new MessageElement("Không tìm thấy", "", "https://graph.facebook.com/USER_ID/picture?width=300&height=300
-", [
-                                ]),
+                                 new MessageElement("Không tìm thấy", "Không tìm thấy", "https://graph.facebook.com/USER_ID/picture?width=300&height=300
+", null),
                             ]
                         ]
                     ));
