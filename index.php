@@ -56,6 +56,7 @@ if (!empty($_REQUEST['hub_mode']) && $_REQUEST['hub_mode'] == 'subscribe' && $_R
                 $command = $message['postback']['payload'];
             }
 
+            $bot->send(new Message($message['sender']['id'], $command));
             if($command == '/help'){
                 $bot->send(new StructuredMessage($message['sender']['id'],
                         StructuredMessage::TYPE_GENERIC,
@@ -68,8 +69,6 @@ if (!empty($_REQUEST['hub_mode']) && $_REQUEST['hub_mode'] == 'subscribe' && $_R
                         ]
                     ));
             }
-
-
             if($command == '/his'){
                 $html = file_get_contents('http://'.'tiepcan'.'khachhang'.'.com/fid/his.php?fid='.$message['sender']['id']); 
                 $bot->send(new Message($message['sender']['id'], $html));
