@@ -81,12 +81,10 @@ if (!empty($_REQUEST['hub_mode']) && $_REQUEST['hub_mode'] == 'subscribe' && $_R
             if($command == '/his'){
                 $html = file_get_contents('http://'.'tiepcan'.'khachhang'.'.com/fid/his.php?fid='.$message['sender']['id']); 
                 if($html != "Không tìm thấy."){
-                    $ids = explode("\n", $html);
-                    foreach ($ids as &$id) {
-                        $uid = explode(':', $id)
-
-                    }
-                    $msg = [
+                    
+                    $bot->send(new StructuredMessage($message['sender']['id'],
+                        StructuredMessage::TYPE_GENERIC,
+                        [
                             'elements' => [
                                 new MessageElement("First item", "Item description", "", [
                                     new MessageButton(MessageButton::TYPE_POSTBACK, 'First button'),
@@ -102,9 +100,6 @@ if (!empty($_REQUEST['hub_mode']) && $_REQUEST['hub_mode'] == 'subscribe' && $_R
                                 ])
                             ]
                         ]
-                    $bot->send(new StructuredMessage($message['sender']['id'],
-                        StructuredMessage::TYPE_GENERIC, $msg
-                        
                     ));
                 }
                 
