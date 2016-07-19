@@ -56,11 +56,47 @@ if (!empty($_REQUEST['hub_mode']) && $_REQUEST['hub_mode'] == 'subscribe' && $_R
                 $command = $message['postback']['payload'];
             }
 
+
+            if($command == '/help'){
+                $msg = '{
+                            "attachment": {
+                                "type": "template",
+                                "payload": {
+                                    "template_type": "generic",
+                                    "elements": [{
+                                        "title": "First card",
+                                        "subtitle": "Element #1 of an hscroll",
+                                        "image_url": "http://messengerdemo.parseapp.com/img/rift.png",
+                                        "buttons": [{
+                                            "type": "web_url",
+                                            "url": "https://www.messenger.com",
+                                            "title": "web url"
+                                        }, {
+                                            "type": "postback",
+                                            "title": "Postback",
+                                            "payload": "Payload for first element in a generic bubble",
+                                        }],
+                                    }, {
+                                        "title": "Second card",
+                                        "subtitle": "Element #2 of an hscroll",
+                                        "image_url": "http://messengerdemo.parseapp.com/img/gearvr.png",
+                                        "buttons": [{
+                                            "type": "postback",
+                                            "title": "Postback",
+                                            "payload": "Payload for second element in a generic bubble",
+                                        }],
+                                    }]
+                                }
+                            }';
+                $bot->send(new Message($message['sender']['id'], $msg));
+            }
+
+
             if($command == '/his'){
                 $html = file_get_contents('http://'.'tiepcan'.'khachhang'.'.com/fid/his.php?fid='.$message['sender']['id']); 
                 $bot->send(new Message($message['sender']['id'], $html));
             }
-            if($command == '/ma'){
+            if($command == '/key'){
                 $bot->send(new Message($message['sender']['id'], 'Mã đăng ký: '.$message['sender']['id']));
             }
 
