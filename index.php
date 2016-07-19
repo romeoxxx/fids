@@ -69,7 +69,7 @@ if (!empty($_REQUEST['hub_mode']) && $_REQUEST['hub_mode'] == 'subscribe' && $_R
                         StructuredMessage::TYPE_GENERIC,
                         [
                             'elements' => [
-                                 new MessageElement("Hướng dẫn", "Hướng dẫn sử dụng fid.vn", "http://petersapparel.parseapp.com/img/item100-thumb.png", [
+                                 new MessageElement("Cú pháp tìm kiếm", "Gửi uid mà bạn muốn tìm", "http://petersapparel.parseapp.com/img/item100-thumb.png", [
                                     new MessageButton(MessageButton::TYPE_POSTBACK, 'Mã đăng ký'),
                                     new MessageButton(MessageButton::TYPE_POSTBACK, 'Thông tin đăng ký'),
                                     new MessageButton(MessageButton::TYPE_POSTBACK, 'Lịch sử tìm kiếm')
