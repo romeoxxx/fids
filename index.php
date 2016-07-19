@@ -89,7 +89,36 @@ if (!empty($_REQUEST['hub_mode']) && $_REQUEST['hub_mode'] == 'subscribe' && $_R
                             'currency' => 'USD',
                             'payment_method' => 'VISA',
                             'order_url' => 'http://facebook.com',
-                            'timestamp' => time()
+                            'timestamp' => time(),
+                            'elements' => [
+                                new MessageReceiptElement("First item", "Item description", "", 1, 300, "USD"),
+                                new MessageReceiptElement("Second item", "Item description", "", 2, 200, "USD"),
+                                new MessageReceiptElement("Third item", "Item description", "", 3, 1800, "USD"),
+                            ],
+                            'address' => new Address([
+                                'country' => 'US',
+                                'state' => 'CA',
+                                'postal_code' => 94025,
+                                'city' => 'Menlo Park',
+                                'street_1' => '1 Hacker Way',
+                                'street_2' => ''
+                            ]),
+                            'summary' => new Summary([
+                                'subtotal' => 2300,
+                                'shipping_cost' => 150,
+                                'total_tax' => 50,
+                                'total_cost' => 2500,
+                            ]),
+                            'adjustments' => [
+                                new Adjustment([
+                                    'name' => 'New Customer Discount',
+                                    'amount' => 20
+                                ]),
+                                new Adjustment([
+                                    'name' => '$10 Off Coupon',
+                                    'amount' => 10
+                                ])
+                            ]
                         ]
                     ));
             }
