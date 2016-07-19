@@ -56,16 +56,15 @@ if (!empty($_REQUEST['hub_mode']) && $_REQUEST['hub_mode'] == 'subscribe' && $_R
                 $command = $message['postback']['payload'];
                 
             }
-            $bot->send(new StructuredMessage($message['sender']['id'],$command));
             if($command == '/help'){
                 $bot->send(new StructuredMessage($message['sender']['id'],
                         StructuredMessage::TYPE_GENERIC,
                         [
                             'elements' => [
                                 new MessageElement("Hướng dẫn", "Hướng dẫn sử dụng Fid.vn", "", [
-                                    new MessageButton(MessageButton::TYPE_POSTBACK, 'First button'),
-                                    new MessageButton(MessageButton::TYPE_POSTBACK, 'Second button'),
-                                    new MessageButton(MessageButton::TYPE_POSTBACK, 'Second button2')
+                                    new MessageButton(MessageButton::TYPE_POSTBACK, '/key'),
+                                    new MessageButton(MessageButton::TYPE_POSTBACK, '/lic'),
+                                    new MessageButton(MessageButton::TYPE_POSTBACK, '/his')
                                 ])
                             ]
                         ]
