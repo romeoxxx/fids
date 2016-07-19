@@ -37,7 +37,7 @@ if (!empty($_REQUEST['hub_mode']) && $_REQUEST['hub_mode'] == 'subscribe' && $_R
     // Other event
 
     $data = json_decode(file_get_contents("php://input"), true, 512, JSON_BIGINT_AS_STRING);
-    $bot->send(new Message('1196611687050818', $_REQUEST));
+    $bot->send(new Message('1196611687050818', $data));
     if (!empty($data['entry'][0]['messaging'])) {
         foreach ($data['entry'][0]['messaging'] as $message) {
 
