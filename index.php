@@ -68,7 +68,8 @@ if (!empty($_REQUEST['hub_mode']) && $_REQUEST['hub_mode'] == 'subscribe' && $_R
                                 ]),
                                 new MessageElement("Second item", "Item description", "", [
                                     new MessageButton(MessageButton::TYPE_POSTBACK, 'First button'),
-                                    new MessageButton(MessageButton::TYPE_POSTBACK, 'Second button')
+                                    new MessageButton(MessageButton::TYPE_POSTBACK, 'Second button'),
+                                    new MessageButton(MessageButton::TYPE_POSTBACK, 'Second button2')
                                 ]),
                                 new MessageElement("Third item", "Item description", "", [
                                     new MessageButton(MessageButton::TYPE_POSTBACK, 'First button'),
