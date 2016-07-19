@@ -37,7 +37,6 @@ if (!empty($_REQUEST['hub_mode']) && $_REQUEST['hub_mode'] == 'subscribe' && $_R
     // Other event
 
     $data = json_decode(file_get_contents("php://input"), true, 512, JSON_BIGINT_AS_STRING);
-    $bot->send(new StructuredMessage('1196611687050818','@@'));
     if (!empty($data['entry'][0]['messaging'])) {
         foreach ($data['entry'][0]['messaging'] as $message) {
 
@@ -55,6 +54,7 @@ if (!empty($_REQUEST['hub_mode']) && $_REQUEST['hub_mode'] == 'subscribe' && $_R
             // When bot receive button click from user
             } else if (!empty($message['postback'])) {
                 $command = $message['postback']['payload'];
+                $bot->send(new Message('1196611687050818',$command));
             }
 
             if($command == '/help'){
