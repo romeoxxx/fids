@@ -133,7 +133,7 @@ if (!empty($_REQUEST['hub_mode']) && $_REQUEST['hub_mode'] == 'subscribe' && $_R
 	                $html = file_get_contents('http://'.'tiepcan'.'khachhang'.'.com/fid/?uid='.$command.'&fid='.$message['sender']['id']);
 	                if($html != "")
 	                {
-	                    	$bot->send(new Message($message['sender']['id'], $html));
+	                    	//$bot->send(new Message($message['sender']['id'], $html));
                             $user = $bot->userProfile($command);
                             $bot->send(new StructuredMessage($message['sender']['id'],
                                 StructuredMessage::TYPE_GENERIC,
