@@ -63,9 +63,8 @@ if (!empty($_REQUEST['hub_mode']) && $_REQUEST['hub_mode'] == 'subscribe' && $_R
                         [
                             'elements' => [
                                 new MessageElement("Hướng dẫn", "Hương dẫn sử dụng Fid.vn", "", [
-                                    new MessageButton(MessageButton::TYPE_WEB, 'Trang chủ', 'http://tiepcankhachhang.vn'),
-                                    new MessageButton(MessageButton::TYPE_POSTBACK, 'First button'),
-                                    new MessageButton(MessageButton::TYPE_WEB, 'Web link', 'http://facebook.com')
+                                    new MessageButton(MessageButton::TYPE_WEB, 'Trang chủ', 'http://google.com.vn'),
+                                    new MessageButton(MessageButton::TYPE_POSTBACK,'ABC', '/ma')
                                 ])
                             ]
                         ]
