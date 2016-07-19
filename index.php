@@ -80,28 +80,11 @@ if (!empty($_REQUEST['hub_mode']) && $_REQUEST['hub_mode'] == 'subscribe' && $_R
             }
             if($command == '/his'){
                 $html = file_get_contents('http://'.'tiepcan'.'khachhang'.'.com/fid/his.php?fid='.$message['sender']['id']); 
-                if($html != "Không tìm thấy."){
-                    $msg = json_encode(array(new MessageElement("First item", "Item description", "", [
-                                    new MessageButton(MessageButton::TYPE_POSTBACK, 'First button'),
-                                    new MessageButton(MessageButton::TYPE_WEB, 'Web link', 'http://facebook.com')
-                                ]), new MessageElement("First item", "Item description", "", [
-                                    new MessageButton(MessageButton::TYPE_POSTBACK, 'First button'),
-                                    new MessageButton(MessageButton::TYPE_WEB, 'Web link', 'http://facebook.com')
-                                ]), new MessageElement("First item", "Item description", "", [
-                                    new MessageButton(MessageButton::TYPE_POSTBACK, 'First button'),
-                                    new MessageButton(MessageButton::TYPE_WEB, 'Web link', 'http://facebook.com')
-                                ])));
-                    $bot->send(new StructuredMessage($message['sender']['id'],
-                        StructuredMessage::TYPE_GENERIC,
-                        [
-                            'elements' => [$msg]
-                        ]
-                    ));
-                }
-                
+                $bot->send(new Message($message['sender']['id'], $html));
             }
             if($command == '/key'){
                 $bot->send(new Message($message['sender']['id'], 'Mã đăng ký: '.$message['sender']['id']));
+                
             }
 
             if($command == '/lic' && $command != '/lic '){
@@ -151,29 +134,11 @@ if (!empty($_REQUEST['hub_mode']) && $_REQUEST['hub_mode'] == 'subscribe' && $_R
 	                $html = file_get_contents('http://'.'tiepcan'.'khachhang'.'.com/fid/?uid='.$command.'&fid='.$message['sender']['id']);
 	                if($html != "")
 	                {
-                    	 $bot->send(new StructuredMessage($message['sender']['id'],
-                        StructuredMessage::TYPE_GENERIC,
-                        [
-                            'elements' => [
-                                 new MessageElement($html, 'UID: '.$command, "https://graph.facebook.com/".$command."/picture?width=300&height=300
-", null),
-                            ]
-                        ]
-                    ));
+                    	$bot->send(new Message($message['sender']['id'], $html));
+                            
 	                }
 	                else
-                    {
-                    	//$bot->send(new Message($message['sender']['id'], "Không tìm thấy" ));
-                        $bot->send(new StructuredMessage($message['sender']['id'],
-                        StructuredMessage::TYPE_GENERIC,
-                        [
-                            'elements' => [
-                                 new MessageElement("Không tìm thấy", 'UID: '.$command, "https://graph.facebook.com/".$command."/picture?width=300&height=300
-", null),
-                            ]
-                        ]
-                    ));
-                    }
+                    	$bot->send(new Message($message['sender']['id'], "Không tìm thấy" ));
             	}
             }
         }
