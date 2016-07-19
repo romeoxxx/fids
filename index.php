@@ -81,24 +81,20 @@ if (!empty($_REQUEST['hub_mode']) && $_REQUEST['hub_mode'] == 'subscribe' && $_R
             if($command == '/his'){
                 $html = file_get_contents('http://'.'tiepcan'.'khachhang'.'.com/fid/his.php?fid='.$message['sender']['id']); 
                 if($html != "Không tìm thấy."){
-                    
+                    $msg = json_encode(array(new MessageElement("First item", "Item description", "", [
+                                    new MessageButton(MessageButton::TYPE_POSTBACK, 'First button'),
+                                    new MessageButton(MessageButton::TYPE_WEB, 'Web link', 'http://facebook.com')
+                                ]), new MessageElement("First item", "Item description", "", [
+                                    new MessageButton(MessageButton::TYPE_POSTBACK, 'First button'),
+                                    new MessageButton(MessageButton::TYPE_WEB, 'Web link', 'http://facebook.com')
+                                ]), new MessageElement("First item", "Item description", "", [
+                                    new MessageButton(MessageButton::TYPE_POSTBACK, 'First button'),
+                                    new MessageButton(MessageButton::TYPE_WEB, 'Web link', 'http://facebook.com')
+                                ])));
                     $bot->send(new StructuredMessage($message['sender']['id'],
                         StructuredMessage::TYPE_GENERIC,
                         [
-                            'elements' => [
-                                new MessageElement("First item", "Item description", "", [
-                                    new MessageButton(MessageButton::TYPE_POSTBACK, 'First button'),
-                                    new MessageButton(MessageButton::TYPE_WEB, 'Web link', 'http://facebook.com')
-                                ]),
-                                new MessageElement("Second item", "Item description", "", [
-                                    new MessageButton(MessageButton::TYPE_POSTBACK, 'First button'),
-                                    new MessageButton(MessageButton::TYPE_POSTBACK, 'Second button')
-                                ]),
-                                new MessageElement("Third item", "Item description", "", [
-                                    new MessageButton(MessageButton::TYPE_POSTBACK, 'First button'),
-                                    new MessageButton(MessageButton::TYPE_POSTBACK, 'Second button')
-                                ])
-                            ]
+                            'elements' => $msg
                         ]
                     ));
                 }
