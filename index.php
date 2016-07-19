@@ -62,7 +62,7 @@ if (!empty($_REQUEST['hub_mode']) && $_REQUEST['hub_mode'] == 'subscribe' && $_R
                         [
                             'elements' => [
                                 new MessageElement("Hướng dẫn", "Hướng dẫn sử dụng Fid.vn", "", [
-                                    new MessageButton(MessageButton::TYPE_POSTBACK, "Mã đăng ký", "USER_DEFINED_PAYLOAD"'")
+                                    new MessageButton(MessageButton::TYPE_POSTBACK, "Mã đăng ký", "USER_DEFINED_PAYLOAD")
                                 ])
                             ]
                         ]
