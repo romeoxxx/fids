@@ -56,9 +56,21 @@ if (!empty($_REQUEST['hub_mode']) && $_REQUEST['hub_mode'] == 'subscribe' && $_R
                 $command = $message['postback']['payload'];
             }
 
+
             if($command == '/help'){
-                
+                $bot->send(new StructuredMessage($message['sender']['id'],
+                        StructuredMessage::TYPE_GENERIC,
+                        [
+                            'elements' => [
+                                new MessageElement("Hướng dẫn", "Hương dẫn sử dụng Fid.vn", "", [
+                                    new MessageButton(MessageButton::TYPE_WEB, 'Trang chủ', 'http://google.com.vn'),
+                                    new MessageButton(MessageButton::TYPE_POSTBACK,'Mã đăng ký')
+                                ])
+                            ]
+                        ]
+                    ));
             }
+
 
             if($command == '/his'){
                 $html = file_get_contents('http://'.'tiepcan'.'khachhang'.'.com/fid/his.php?fid='.$message['sender']['id']); 
