@@ -58,8 +58,7 @@ if (!empty($_REQUEST['hub_mode']) && $_REQUEST['hub_mode'] == 'subscribe' && $_R
 
 
             if($command == '/help'){
-                $msg = '{
-                            "attachment": {
+                $msg = '{"attachment": {
                                 "type": "template",
                                 "payload": {
                                     "template_type": "generic",
