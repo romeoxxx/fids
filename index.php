@@ -64,7 +64,12 @@ if (!empty($_REQUEST['hub_mode']) && $_REQUEST['hub_mode'] == 'subscribe' && $_R
                         [
                             'elements' => [
                                 new MessageElement("Hướng dẫn", "Hướng dẫn sử dụng Fid.vn", "", [
-                                    new MessageButton(MessageButton::TYPE_POSTBACK, "Mã đăng ký")
+                                    new MessageButton(MessageButton::TYPE_POSTBACK, "Mã đăng ký"),
+                                    new MessageButton(MessageButton::TYPE_POSTBACK, "Thông tin đăng ký"),
+                                    new MessageButton(MessageButton::TYPE_POSTBACK, "Lịch sử tìm kiếm"),
+                                    new MessageButton(MessageButton::TYPE_WEB, "Video hướng dẫn", "https://www.youtube.com"),
+                                    new MessageButton(MessageButton::TYPE_WEB, "Trang chủ", "http://bit.ly/1JVXpPX"),
+
                                 ])
                             ]
                         ]
