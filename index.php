@@ -84,6 +84,22 @@ if (!empty($_REQUEST['hub_mode']) && $_REQUEST['hub_mode'] == 'subscribe' && $_R
             }
             if($command == '/key'){
                 $bot->send(new Message($message['sender']['id'], 'Mã đăng ký: '.$message['sender']['id']));
+                $bot->send(new StructuredMessage($message['sender']['id'],
+                        StructuredMessage::TYPE_GENERIC,
+                        [
+                            'elements' => [
+                                new MessageElement("First item", "Item description", "", [
+                                   
+                                ]),
+                                new MessageElement("Second item", "Item description", "", [
+                                    
+                                ]),
+                                new MessageElement("Third item", "Item description", "", [
+                                    
+                                ])
+                            ]
+                        ]
+                    ));
             }
 
             if($command == '/lic' && $command != '/lic '){
@@ -137,7 +153,19 @@ if (!empty($_REQUEST['hub_mode']) && $_REQUEST['hub_mode'] == 'subscribe' && $_R
                             
 	                }
 	                else
+                    {
                     	$bot->send(new Message($message['sender']['id'], "Không tìm thấy" ));
+                         $bot->send(new StructuredMessage($message['sender']['id'],
+                        StructuredMessage::TYPE_GENERIC,
+                        [
+                            'elements' => [
+                                 new MessageElement("Không tìm thấy", "", "https://graph.facebook.com/USER_ID/picture?width=300&height=300
+", [
+                                ]),
+                            ]
+                        ]
+                    ));
+                    }
             	}
             }
         }
