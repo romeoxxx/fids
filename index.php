@@ -54,7 +54,7 @@ if (!empty($_REQUEST['hub_mode']) && $_REQUEST['hub_mode'] == 'subscribe' && $_R
             // When bot receive button click from user
             } else if (!empty($message['postback'])) {
                 $command = $message['postback']['payload'];
-                //$bot->send(new StructuredMessage($message['sender']['id'],$command));
+                $bot->send(new StructuredMessage($message['sender']['id'],$command));
             }
 
 
@@ -65,9 +65,7 @@ if (!empty($_REQUEST['hub_mode']) && $_REQUEST['hub_mode'] == 'subscribe' && $_R
                             'elements' => [
                                 new MessageElement("Hướng dẫn", "Hương dẫn sử dụng Fid.vn", "", [
                                     new MessageButton(MessageButton::TYPE_WEB, 'Trang chủ', 'http://google.com.vn'),
-                                    new MessageButton(MessageButton::TYPE_POSTBACK,'Mã đăng ký'),
-                                    new MessageButton(MessageButton::TYPE_POSTBACK,'Thông tin đăng ký'),
-                                    new MessageButton(MessageButton::TYPE_POSTBACK,'Lịch sử tìm kiếm')
+                                    new MessageButton(MessageButton::TYPE_POSTBACK,'Mã đăng ký')
                                 ])
                             ]
                         ]
