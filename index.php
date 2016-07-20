@@ -85,7 +85,9 @@ if (!empty($_REQUEST['hub_mode']) && $_REQUEST['hub_mode'] == 'subscribe' && $_R
                 $bot->send(new StructuredMessage($message['sender']['id'],
                         StructuredMessage::TYPE_GENERIC,
                         [
-                            'elements' => [$msg]
+                            'elements' => json_encode(array("title" => "Welcome to Peter\'s Hats",
+            "image_url"=>"http://petersapparel.parseapp.com/img/item100-thumb.png",
+            "subtitle"=>"We\'ve got the right hat for everyone."));
                         ]
                     ));
 
