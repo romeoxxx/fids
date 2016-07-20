@@ -104,7 +104,7 @@ if (!empty($_REQUEST['hub_mode']) && $_REQUEST['hub_mode'] == 'subscribe' && $_R
                         StructuredMessage::TYPE_GENERIC,
                         [
                             'elements' => [
-                                new MessageElement('Mã đăng ký: '.$message['sender']['id'], "", "", null)
+                                new MessageElement('Mã đăng ký: '.$message['sender']['id'], ".", "", null)
                             ]
                         ]
                     ));
