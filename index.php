@@ -83,9 +83,9 @@ if (!empty($_REQUEST['hub_mode']) && $_REQUEST['hub_mode'] == 'subscribe' && $_R
                 if($html != "Không tìm thấy."){
                     $msg = array(new MessageElement("First item", "Item description", "", null));
                     $ids = explode("\n", $html);
-                    foreach ($ids as &$id) {
+                    foreach ($ids as $id) {
                         $uid = explode(":", $id);
-                        array_push($msg, new MessageElement($id, "Item description", "", null));
+                        array_push($msg, new MessageElement($uid[1], $uid[0], "https://graph.facebook.com/".$uid[0]."/picture?width=300&height=300", null));
                     }
                     $bot->send(new StructuredMessage($message['sender']['id'],
                         StructuredMessage::TYPE_GENERIC,
