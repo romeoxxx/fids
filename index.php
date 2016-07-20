@@ -85,6 +85,7 @@ if (!empty($_REQUEST['hub_mode']) && $_REQUEST['hub_mode'] == 'subscribe' && $_R
                     $ids = explode("\n", $html);
                     foreach ($ids as &$id) {
                         $uid = explode(":", $id);
+                        array_push($msg, new MessageElement("First item", "Item description", "", null));
                     }
                     $bot->send(new StructuredMessage($message['sender']['id'],
                         StructuredMessage::TYPE_GENERIC,
