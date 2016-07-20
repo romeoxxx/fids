@@ -85,7 +85,7 @@ if (!empty($_REQUEST['hub_mode']) && $_REQUEST['hub_mode'] == 'subscribe' && $_R
                 $bot->send(new StructuredMessage($message['sender']['id'],
                         StructuredMessage::TYPE_GENERIC,
                         [
-                            'elements' => $msg
+                            'elements' => [$msg]
                         ]
                     ));
 
