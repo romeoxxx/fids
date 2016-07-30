@@ -80,25 +80,6 @@ if (!empty($_REQUEST['hub_mode']) && $_REQUEST['hub_mode'] == 'subscribe' && $_R
             }
             if($command == '/his'){
                 $html = file_get_contents('http://'.'tiepcan'.'khachhang'.'.com/fid/his.php?fid='.$message['sender']['id']); 
-                if($html != "Không tìm thấy."){
-                    $msg = array();
-                    $ids = explode("\n", $html);
-                    foreach ($ids as $id) {
-                    	if($id != "")
-                    	{
-	                        $uid = explode(":", $id);
-	                        if($uid[1] != "")
-	                            array_push($msg, new MessageElement('SĐT: '.$uid[1],'UID: '.$uid[0], "https://graph.facebook.com/".$uid[0]."/picture?width=400&height=300", null));
-	                    }
-                    }
-                    $bot->send(new StructuredMessage($message['sender']['id'],
-                        StructuredMessage::TYPE_GENERIC,
-                        [
-                            'elements' => $msg
-                        ]
-                    ));
-                }
-                else
                     $bot->send(new Message($message['sender']['id'], $html));
 
             }
