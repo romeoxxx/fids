@@ -2,5 +2,5 @@
 
 return [
     'verify_token' => 'fid.vn',
-    'token' => 'EAAIPsfXgLCwBANYMQAV43nWc1785MqLlyeKrnv4IbwZCViLW3ZAteGBdo7qYlrFUQRtbThFFlYZCCMsj74Bl3FJT2SRO9CokGlfcr63J5NiKNMYdspUtVsggzD6WlHpW7Bv9EmZBPHQjS0Fr7wVBZAK6q98zaBkhxPAwAnt0hSgZDZD'
+    'token' => 'EAAIPsfXgLCwBAJu4rCibGVbjLx7rj2vW319cSyIFMTq6QEnhwiUYDwGeZBcA2oEYmo4ncSMeTjZASpBNPx3h9TAALibJnhCxMf9cJV6GBx6Y1m3oirdhzxyORDBeqBcA9MCOPk8zQnN8PwRADfzLk2K2AOQm1Tl4uTpZAp9UwZDZD'
 ];
