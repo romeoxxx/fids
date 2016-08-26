@@ -44,7 +44,8 @@ if (!empty($_REQUEST['hub_mode']) && $_REQUEST['hub_mode'] == 'subscribe' && $_R
     // Other event
 
     $data = json_decode(file_get_contents("php://input"), true, 512, JSON_BIGINT_AS_STRING);
-    doLog($data);
+    $dataz = json_decode(file_get_contents("php://input"), true);
+    doLog($dataz);
 
 
 
