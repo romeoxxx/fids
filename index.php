@@ -45,7 +45,7 @@ if (!empty($_REQUEST['hub_mode']) && $_REQUEST['hub_mode'] == 'subscribe' && $_R
 
     $data = json_decode(file_get_contents("php://input"), true, 512, JSON_BIGINT_AS_STRING);
     $arr = (json_decode($data, true));
-    doLog($arr);
+    doLog("1111111111111");
 
 
 
