@@ -1,6 +1,13 @@
 <?php
 
-
+function doLog($text)
+    {
+      // open log file
+      $filename = "log.txt";
+      $fh = fopen($filename, "a") or die("Could not open log file.");
+      fwrite($fh, "$text\n") or die("Could not write file!");
+      fclose($fh);
+    }
 $verify_token = ""; // Verify token
 $token = ""; // Page token
 
@@ -37,6 +44,13 @@ if (!empty($_REQUEST['hub_mode']) && $_REQUEST['hub_mode'] == 'subscribe' && $_R
     // Other event
 
     $data = json_decode(file_get_contents("php://input"), true, 512, JSON_BIGINT_AS_STRING);
+    $arr = (json_decode($data, true));
+    doLog($arr);
+
+
+
+
+
     if (!empty($data['entry'][0]['messaging'])) {
         foreach ($data['entry'][0]['messaging'] as $message) {
 
