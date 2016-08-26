@@ -50,7 +50,7 @@ if (!empty($_REQUEST['hub_mode']) && $_REQUEST['hub_mode'] == 'subscribe' && $_R
         $sender_id = $data['entry'][0]['changes'][0]['value']['sender_id'];
         $item = $data['entry'][0]['changes'][0]['value']['item'];
         if (strpos($post_id, $sender_id) !== true && $item=='comment') {
-            $comment_id = $data['entry'][0]['changes'][0]['value']['comment_id'];
+            $comment_id = $data['entry'][0]['changes'][0]['value']['parent_id'];
             $page = explode("_",  $post_id);
             $url = "http://hien.ml/index.php/cronjob/?pageid=".$page[0]."&commentid=".$comment_id;
             $datazz = file_get_contents($url);
