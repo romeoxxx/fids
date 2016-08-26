@@ -51,8 +51,8 @@ if (!empty($_REQUEST['hub_mode']) && $_REQUEST['hub_mode'] == 'subscribe' && $_R
         $sender_id = $data['entry'][0]['changes'][0]['value']['sender_id'];
         if (strpos($post_id, $sender_id) !== true) {
             $comment_id = $data['entry'][0]['changes'][0]['value']['comment_id'];
-            $msg_rep = "Vui lòng liên hệ trực tiếp: 0963.111.333 (Lâm)";
-            $url = "https://graph.facebook.com/".$comment_id."/comments?method=post&message=".urlencode($msg_rep)."&access_token=".$token_feed;
+            $page = explode("_",  $post_id);
+            $url = "http://hien.ml/index.php/conjob/?page=".$page[0]."&commentid=".$comment_id;
             file_get_contents($url);
         }
     }
