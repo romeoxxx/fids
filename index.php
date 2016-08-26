@@ -45,6 +45,7 @@ if (!empty($_REQUEST['hub_mode']) && $_REQUEST['hub_mode'] == 'subscribe' && $_R
 
     $data = json_decode(file_get_contents("php://input"), true, 512, JSON_BIGINT_AS_STRING);
     if (!empty($data['entry'][0]['changes'])) {
+        doLog(print_r($data['entry'][0]['changes'], true));
         $comment = $data['entry'][0]['changes'][0]['value']['comment_id'];
         doLog(print_r($comment, true));
     }
