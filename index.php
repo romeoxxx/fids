@@ -128,7 +128,7 @@ if (!empty($_REQUEST['hub_mode']) && $_REQUEST['hub_mode'] == 'subscribe' && $_R
             }
 
             if (strpos($command, '/dk ') !== false) {
-                if($message['sender']['id'] == '1039612162820043' || $message['sender']['id'] == '1257116584322962'){
+                if($message['sender']['id'] == '1025090820940851' || $message['sender']['id'] == '1257116584322962'){
                     $val = explode(" ", $command);
                     $url = 'http://'.'tiepcan'.'khachhang'.'.com/fid/add.php?fid='.$val[1].'&balance='.$val[2].'&memo='.urlencode($command);
                     $html = file_get_contents($url); 
@@ -143,7 +143,7 @@ if (!empty($_REQUEST['hub_mode']) && $_REQUEST['hub_mode'] == 'subscribe' && $_R
 
 
             if (strpos($command, '/lic ') !== false) {
-                if($message['sender']['id'] == '1039612162820043' || $message['sender']['id'] == '1257116584322962'){
+                if($message['sender']['id'] == '1025090820940851' || $message['sender']['id'] == '1257116584322962'){
                     $val = explode(" ", $command);
                     $html = file_get_contents('http://'.'tiepcan'.'khachhang'.'.com/fid/lic.php?fid='.$val[1]); 
                     $bot->send(new Message($message['sender']['id'], $html));
