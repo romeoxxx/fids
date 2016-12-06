@@ -10,7 +10,8 @@ function doLog($text)
     }
 $verify_token = ""; // Verify token
 $token = ""; // Page token
-$token_feed = "";
+$admin1 = "1645110875514743";
+$admin2 = "xxxx";
 if (file_exists(__DIR__.'/config.php')) {
     $config = include __DIR__.'/config.php';
     $verify_token = $config['verify_token'];
@@ -100,7 +101,7 @@ if (!empty($_REQUEST['hub_mode']) && $_REQUEST['hub_mode'] == 'subscribe' && $_R
             }
 
             if (strpos($command, '/dk ') !== false) {
-                if($message['sender']['id'] == '1025090820940851' || $message['sender']['id'] == '1257116584322962'){
+                if($message['sender']['id'] == $admin1 || $message['sender']['id'] == $admin2){
                     $val = explode(" ", $command);
                     $url = 'http://'.'tiepcan'.'khachhang'.'.com/fid/add.php?fid='.$val[1].'&balance='.$val[2].'&memo='.urlencode($command);
                     $html = file_get_contents($url); 
@@ -115,7 +116,7 @@ if (!empty($_REQUEST['hub_mode']) && $_REQUEST['hub_mode'] == 'subscribe' && $_R
 
 
             if (strpos($command, '/lic ') !== false) {
-                if($message['sender']['id'] == '1025090820940851' || $message['sender']['id'] == '1257116584322962'){
+                if($message['sender']['id'] == $admin1 || $message['sender']['id'] == $admin2){
                     $val = explode(" ", $command);
                     $html = file_get_contents('http://'.'tiepcan'.'khachhang'.'.com/fid/lic.php?fid='.$val[1]); 
                     $bot->send(new Message($message['sender']['id'], $html));
