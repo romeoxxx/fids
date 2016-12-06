@@ -15,7 +15,6 @@ if (file_exists(__DIR__.'/config.php')) {
     $config = include __DIR__.'/config.php';
     $verify_token = $config['verify_token'];
     $token = $config['token'];
-    $token_feed = $config['token_feed'];
 }
 
 require_once(dirname(__FILE__) . '/vendor/autoload.php');
@@ -45,25 +44,6 @@ if (!empty($_REQUEST['hub_mode']) && $_REQUEST['hub_mode'] == 'subscribe' && $_R
     // Other event
 
     $data = json_decode(file_get_contents("php://input"), true, 512, JSON_BIGINT_AS_STRING);
-    if (!empty($data['entry'][0]['changes'])) {
-        $post_id = $data['entry'][0]['changes'][0]['value']['post_id'];
-        $pid = explode('_', $post_id);
-        $pid = $pid[0];
-        $sender_id = $data['entry'][0]['changes'][0]['value']['sender_id'];
-        $item = $data['entry'][0]['changes'][0]['value']['item'];
-        if ($sender_id !=  $pid && $item=='comment') {
-            $parent_id = $data['entry'][0]['changes'][0]['value']['parent_id'];
-            $comment_id = $data['entry'][0]['changes'][0]['value']['comment_id'];
-            if($post_id != $parent_id)
-                $comment_id = $parent_id;
-            $page = explode("_",  $post_id);
-            $url = "http://hien.ml/index.php/cronjob/?pageid=".$page[0]."&commentid=".$comment_id;
-            $datazz = file_get_contents($url);
-            //doLog($url.'|'.print_r($data['entry'][0]['changes'],true));
-        }
-    }
-
-
     if (!empty($data['entry'][0]['messaging'])) {
         foreach ($data['entry'][0]['messaging'] as $message) {
 
