@@ -91,15 +91,7 @@ if (!empty($_REQUEST['hub_mode']) && $_REQUEST['hub_mode'] == 'subscribe' && $_R
 
             }
             if($command == '/key'){
-                $bot->send(new StructuredMessage($message['sender']['id'],
-                        StructuredMessage::TYPE_GENERIC,
-                        [
-                            'elements' => [
-                                new MessageElement('Mã đăng ký: '.$message['sender']['id'], ".", "", null)
-                            ]
-                        ]
-                    ));
-                
+                $bot->send(new Message($message['sender']['id'], 'Mã đăng ký: '.$message['sender']['id']));
             }
 
             if($command == '/lic' && $command != '/lic '){
